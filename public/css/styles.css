@@ -8,3 +8,8 @@
   height: 60vh;
   width: 100%;
 }
+
+.article {
+  margin-top: 1rem;
+  border-bottom: solid 1px grey;
+}
