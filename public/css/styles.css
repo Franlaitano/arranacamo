@@ -10,7 +10,7 @@ footer {
 
 /* Fondo de la web */
 .background-img {
-  background-image: url("/public/img/fondo.jpg");
+  background-image: url("https://www.thespruce.com/thmb/B3EY0D_N04MHJ6Pi4AUiW6uEJFU=/4200x0/filters:no_upscale():max_bytes(150000):strip_icc()/tips-for-better-home-office-lighting-1812436-01.1-HERO-17b6f1ec4b174c7f9017e788cbe8cf81.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   height: 60vh;
