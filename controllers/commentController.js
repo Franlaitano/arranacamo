@@ -1,19 +1,8 @@
-const { Article } = require("../models");
-
 // Display a listing of the resource.
-async function index(req, res) {
-  const articles = await Article.findAll();
-  res.render("home", { articles });
-}
+async function index(req, res) {}
 
 // Display the specified resource.
-
-async function show(req, res) {
-  let comments = [];
-  const article = await Article.findByPk(req.params.id);
-  comments.push({ text: req.body.commentText, name: req.body.name });
-  res.render("article", { article, comments });
-}
+async function show(req, res) {}
 
 // Show the form for creating a new resource
 async function create(req, res) {}
