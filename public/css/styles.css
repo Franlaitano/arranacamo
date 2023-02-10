@@ -13,3 +13,24 @@
   margin-top: 1rem;
   border-bottom: solid 1px grey;
 }
+
+.insertComment {
+  display: flex;
+  flex-direction: column;
+}
+
+.insertComment textarea input button {
+  margin-top: 100rem;
+}
+
+#inputName {
+  margin-bottom: 0.5rem;
+}
+
+#inputText {
+  margin-bottom: 0.5rem;
+}
+
+#inputButton {
+  margin-bottom: 0.5rem;
+}

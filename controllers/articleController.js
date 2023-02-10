@@ -7,9 +7,13 @@ async function index(req, res) {
 }
 
 // Display the specified resource.
+
 async function show(req, res) {
+  let comments = [];
+  let cantidad = comments.length;
   const article = await Article.findByPk(req.params.id);
-  res.render("article", { article });
+  comments.push({ text: req.body.commentText, name: req.body.name });
+  res.render("article", { article, comments });
 }
 
 // Show the form for creating a new resource

@@ -10,4 +10,7 @@ router.get("/", async function (req, res) {
   res.render("home", { articles });
 });
 
+router.post("/articulos/:id", (req, res) => {
+  res.redirect("/articulos/:id");
+});
 module.exports = router;
