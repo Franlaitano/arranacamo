@@ -22,5 +22,13 @@
   "description": "Hack Academy - Ejemplo de MVC y Sequelize",
   "devDependencies": {
     "@faker-js/faker": "^6.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RamiroVidal26/arranacamo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RamiroVidal26/arranacamo/issues"
+  },
+  "homepage": "https://github.com/RamiroVidal26/arranacamo#readme"
 }
