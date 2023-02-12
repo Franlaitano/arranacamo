@@ -24,6 +24,10 @@ Article.initModel(sequelize);
  * mismos (usando métodos como belongsTo, hasMany y belongsToMany)...
  */
 
+Article.hasMany(Comment);
+Comment.belongsTo(Article);
+User.belongsTo(Article);
+
 module.exports = {
   sequelize,
   User,

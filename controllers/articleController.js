@@ -1,8 +1,9 @@
 const { Article } = require("../models");
+var format = require("date-fns/format");
 
 // Display a listing of the resource.
 async function index(req, res) {
-  const articles = await Article.findAll();
+  const articles = await Article.findAll({ include: Comment });
   res.render("home", { articles });
 }
 
