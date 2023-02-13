@@ -1,3 +1,7 @@
+const { Article } = require("../models");
+const { format } = require("date-fns");
+const { Comment } = require("../models");
+
 // Display a listing of the resource.
 async function index(req, res) {}
 
@@ -8,8 +12,14 @@ async function show(req, res) {}
 async function create(req, res) {}
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
-
+async function store(req, res) {
+  const comment = {
+    content: req.body.commentText,
+    username: req.body.name,
+    articleId: req.params.id,
+  };
+  Comment.bulkCreate(comment);
+}
 // Show the form for editing the specified resource.
 async function edit(req, res) {}
 

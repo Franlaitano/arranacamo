@@ -11,6 +11,6 @@ router.get("/", async function (req, res) {
 });
 
 router.post("/articulos/:id", (req, res) => {
-  res.redirect("/articulos/:id");
+  res.redirect(`/articulos/${req.params.id}`);
 });
 module.exports = router;

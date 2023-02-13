@@ -1,5 +1,6 @@
 const { Article } = require("../models");
 const { format } = require("date-fns");
+const { Comment } = require("../models");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -10,9 +11,8 @@ async function index(req, res) {
 // Display the specified resource.
 
 async function show(req, res) {
-  let comments = [];
   const article = await Article.findByPk(req.params.id);
-  comments.push({ text: req.body.commentText, name: req.body.name });
+  const comments = await Comment.findAll({ where: { articleId: req.params.id } });
   res.render("article", { article, comments });
 }
 
