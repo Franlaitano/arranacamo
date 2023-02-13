@@ -22,7 +22,7 @@
       </div>
       <!-- prettier-ignore -->
       <div>
-        <form action="">
+        <form action="/articulos/<%= article.id%>/editar" method="post">
           <div>
             <label class="form-label" for="title">Title</label>
             <input class="form-control" name="title" id="title" type="text" value="<%=article.title%>"/>
@@ -33,7 +33,7 @@
           </div>
            <!-- prettier-ignore-end -->
           <div class="d-flex justify-content-end mt-2">
-            <button class="btn btn-success btn-lg">Crear</button>
+            <button class="btn btn-success btn-lg">Editar</button>
           </div>
         </form>
       </div>

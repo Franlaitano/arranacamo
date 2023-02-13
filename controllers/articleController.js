@@ -15,7 +15,6 @@ async function show(req, res) {
   const article = await Article.findByPk(req.params.id, {
     include: Comment,
   });
-  console.log(article.comments);
   res.render("article", { article, comments: article.comments });
 }
 
@@ -26,8 +25,6 @@ async function create(req, res) {
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  console.log(req.body.title);
-  console.log(req.body.content);
   await Article.create({
     include: Users,
     title: `${req.body.title}`,
@@ -43,10 +40,22 @@ async function edit(req, res) {
 }
 
 // Update the specified resource in storage.
-async function update(req, res) {}
+async function update(req, res) {
+  const article = await Article.findOne({ where: { id: req.params.id } });
+  article.update({
+    include: Users,
+    title: `${req.body.title}`,
+    content: `${req.body.content}`,
+  });
+  res.redirect("/panel");
+}
 
 // Remove the specified resource from storage.
-async function destroy(req, res) {}
+async function destroy(req, res) {
+  const article = await Article.findOne({ where: { id: req.params.id } });
+  article.destroy();
+  res.redirect("/panel");
+}
 
 // Otros handlers...
 // ...
