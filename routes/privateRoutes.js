@@ -8,7 +8,7 @@ const { Article } = require("../models");
 // Rutas relacionadas al panel de control (Admin):
 // ...
 
-router.get("/admin", async function (req, res) {
+router.get("/", async function (req, res) {
   const articles = await Article.findAll();
   res.render("admin", { articles });
 });

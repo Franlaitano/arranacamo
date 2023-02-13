@@ -1,10 +1,10 @@
 const { Article } = require("../models");
-var format = require("date-fns/format");
+const { format } = require("date-fns");
 
 // Display a listing of the resource.
 async function index(req, res) {
   const articles = await Article.findAll({ include: Comment });
-  res.render("home", { articles });
+  res.render("home", { articles, format });
 }
 
 // Display the specified resource.
@@ -17,7 +17,9 @@ async function show(req, res) {
 }
 
 // Show the form for creating a new resource
-async function create(req, res) {}
+async function create(req, res) {
+  res.render("newArticle");
+}
 
 // Store a newly created resource in storage.
 async function store(req, res) {}

@@ -14,7 +14,10 @@
   </head>
   <body>
     <%-include("partials/navbar.ejs")%>
+
     <!-- prettier-ignore -->
+    <div class="container">
+    <div class="d-flex justify-content-between mt-2"><h2>Articles</h2><a href="/articulos/crear" class="btn btn-success">Nuevo</a></div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -22,7 +25,7 @@
           <th scope="col">Title</th>
           <th scope="col">Content</th>
           <th scope="col">Image</th>
-          <th scope="col">Created at</th>
+          <th scope="col">CreatedAt</th>
           <th scope="col">Author</th>
           <th scope="col">Actions</th>
         </tr>
@@ -39,12 +42,18 @@
           <td><%=article.user%></td>
           <td>
             <a id="editButton<%=article.id%>" class="btn btn-primary" href="">editar</a>
-            <a id="eraseButton<%=article.id%>" class="btn btn-danger" href="panel/admin/eliminar/<%=article.id%>">eliminar</a>
+            <a
+              id="eraseButton<%=article.id%>"
+              class="btn btn-danger"
+              href="panel/admin/eliminar/<%=article.id%>"
+              >eliminar</a
+            >
           </td>
         </tr>
         <%}%>
       </tbody>
     </table>
+  </div>
     <!-- prettier-ignore-end -->
     <%-include("partials/footer.ejs")%>
     <script src="/js/app.js"></script>

@@ -32,7 +32,7 @@
         <div id="<%=article.id%>" class="article pb-3">
           <h3 class="fw-bold px-4"><%= article.title%></h3>
           <p class="px-4"><%= article.content %></p>
-          <em class="px-4">Creado por <%= article.author %> el FECHA </em>
+          <em class="px-4">Creado por <%= article.author %> <%=article.createdAt%></em>
         </div>
       </a>
         <%}%>
