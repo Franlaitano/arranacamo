@@ -15,9 +15,6 @@ async function create(req, res) {}
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  console.log("HOLA");
-  console.log(req.body);
-  console.log(req.params);
   const comment = {
     content: req.body.commentText,
     username: req.body.name,
