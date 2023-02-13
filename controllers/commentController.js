@@ -18,7 +18,7 @@ async function store(req, res) {
     username: req.body.name,
     articleId: req.params.id,
   };
-  Comment.bulkCreate(comment);
+  await Comment.bulkCreate(comment);
 }
 // Show the form for editing the specified resource.
 async function edit(req, res) {}
