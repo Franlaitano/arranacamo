@@ -16,9 +16,9 @@
     <%-include("partials/navbar.ejs")%>
     <div class="background-img d-flex justify-content-center align-items-center">
       <div class="container">
-        <div class="text-center">
-          <h1>Hack the blog</h1>
-          <p>El blog de Hack Academy</p>
+        <div class="text-center text-white">
+          <h1 class="fs-1">Hack the blog</h1>
+          <p class="fs-5">El blog de Hack Academy</p>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
         <a style="text-decoration: inherit;
         color: inherit;
         cursor: auto" href="http://localhost:3000/articulos/<%=article.id%>">
-        <div id="<%=article.id%>" class="article pb-3">
+        <div id="<%=article.id%>" class="article p-4 rounded">
           <h3 class="fw-bold px-4"><%= article.title%></h3>
           <p class="px-4"><%= article.content %></p>
           <em class="px-4">Creado por <%= article.author %> <%=article.createdAt%></em>
@@ -38,6 +38,7 @@
         <%}%>
       </div>
     </div>
+    <hr class="mt-5" />
     <!-- prettier-ignore-end -->
 
     <%-include("partials/footer.ejs")%>

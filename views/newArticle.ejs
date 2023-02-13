@@ -21,14 +21,20 @@
         <h1>New Article</h1>
       </div>
       <div>
-        <form action="">
+        <form method="post" action="/articulos">
           <div>
             <label class="form-label" for="title">Title</label>
             <input class="form-control" name="title" id="title" type="text" />
           </div>
           <div>
             <label class="form-label" for="content">Content</label>
-            <textarea class="form-control" name="content" id="" cols="30" rows="10"></textarea>
+            <textarea
+              class="form-control"
+              name="content"
+              id="content"
+              cols="30"
+              rows="10"
+            ></textarea>
           </div>
           <div class="d-flex justify-content-end mt-2">
             <button class="btn btn-success btn-lg">Crear</button>

@@ -3,7 +3,9 @@ const { format } = require("date-fns");
 const { Comment } = require("../models");
 
 // Display a listing of the resource.
-async function index(req, res) {}
+async function index(req, res) {
+  console.log(req.body);
+}
 
 // Display the specified resource.
 async function show(req, res) {}
@@ -13,12 +15,16 @@ async function create(req, res) {}
 
 // Store a newly created resource in storage.
 async function store(req, res) {
+  console.log("HOLA");
+  console.log(req.body);
+  console.log(req.params);
   const comment = {
     content: req.body.commentText,
     username: req.body.name,
-    articleId: req.params.id,
+    articleId: req.params.articleId,
   };
-  await Comment.bulkCreate(comment);
+  await Comment.create(comment);
+  res.redirect(`/articulos/${req.params.articleId}`);
 }
 // Show the form for editing the specified resource.
 async function edit(req, res) {}

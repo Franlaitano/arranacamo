@@ -1,17 +1,35 @@
 /* Colocar aquí CSS "propio" */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navbar */
+.nav {
+  position: sticky;
+  top: 0;
+}
+.button:hover {
+  transform: scale(1.2);
+  transition: 600ms;
+}
 
 /* Fondo de la web */
 .background-img {
-  background-image: url("https://static.vecteezy.com/system/resources/previews/000/893/037/large_2x/laptop-notebook-and-coffee-cup-on-work-desk-photo.jpg");
+  background-image: url("https://wallpaperaccess.com/full/279553.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  height: 60vh;
+  height: 50vh;
   width: 100%;
 }
 
 .article {
   margin-top: 1rem;
   border-bottom: solid 1px grey;
+}
+.article:hover {
+  border-bottom: solid 1px white;
+  transform: scale(1.01);
+  transition: 300ms;
 }
 
 .article:hover {
@@ -37,4 +55,10 @@
 
 #inputButton {
   margin-bottom: 0.5rem;
+}
+
+/* footer */
+.icon:hover {
+  transform: scale(1.1);
+  transition: 400ms;
 }

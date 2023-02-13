@@ -4,6 +4,7 @@ const commentController = require("../controllers/commentController");
 
 // Rutas relacionadas a los comentarios:
 // ...
-router.post("/", commentController.store);
+router.get("/", commentController.index);
+router.post("/:articleId", commentController.store);
 
 module.exports = router;

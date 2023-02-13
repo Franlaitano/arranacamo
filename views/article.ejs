@@ -17,7 +17,7 @@
 
     <div class="background-img d-flex justify-content-center align-items-center">
       <div class="container">
-        <div class="text-center">
+        <div class="text-center text-white">
           <h1><%= article.title%></h1>
           <em>FECHA</em>
         </div>
@@ -30,17 +30,24 @@
 
     <div class="container">
       <h2 class="">Add your coment</h2>
-      <form method="post" action="/articulos/<%=article.id%>">
+      <form method="post" action="/comentarios/<%=article.id%>">
         <div class="insertComment">
-          <input id="inputName" type="text" name="name" placeholder="Name" />
-          <textarea id="inputText" name="commentText" cols="30" rows="10"></textarea>
+          <input class="form-control" id="inputName" type="text" name="name" placeholder="Name" />
+          <textarea
+            placeholder="Comment"
+            class="form-control"
+            id="inputText"
+            name="commentText"
+            cols="30"
+            rows="10"
+          ></textarea>
           <button id="inputButton" type="submit" class="btn btn-primary">Send</button>
         </div>
       </form>
-      <h2>Comments</h2>
+      <h2>Comments(<%= comments.length%>)</h2>
       <% for (const comment of comments) { %>
-      <p><%= comment.text %></p>
-      <em> <%= comment.name %></em>
+      <p><%= comment.content %></p>
+      <em> <%= comment.username %></em>
       <% } %>
     </div>
     <!-- prettier-ignore-end -->
