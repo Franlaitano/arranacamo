@@ -4,6 +4,7 @@ body {
 }
 
 /* Navbar */
+
 .nav {
   position: sticky;
   top: 0;
@@ -61,4 +62,8 @@ body {
 .icon:hover {
   transform: scale(1.1);
   transition: 400ms;
+}
+
+.admin-btn:hover {
+  border: 1px solid whitesmoke;
 }

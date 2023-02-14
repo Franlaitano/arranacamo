@@ -17,7 +17,7 @@
 
     <!-- prettier-ignore -->
     <div class="container">
-    <div class="d-flex justify-content-between mt-2"><h2>Articles</h2><a href="/articulos/crear" class="btn btn-success h-50 button">Nuevo</a></div>
+    <div class="d-flex justify-content-between mt-2"><h2 class="fw-bold">Articles</h2><a href="/articulos/crear" class="btn btn-success h-50 button">Nuevo</a></div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -40,11 +40,11 @@
           <td></td>
           <td><%=article.createdAt%></td>
           <td><%=article.author%></td>
-          <td>
-            <a id="editButton<%=article.id%>" class="btn btn-primary btn-edit" href="articulos/<%= article.id%>/editar">editar</a>
+          <td class="text-center">
+            <a id="editButton<%=article.id%>" class="btn btn-primary btn-edit w-100 admin-btn" href="articulos/<%= article.id%>/editar">editar</a>
             <a
               id="eraseButton<%=article.id%>"
-              class="btn btn-danger mt-1"
+              class="btn btn-danger mt-1 w-100 admin-btn"
               href="articulos/<%= article.id%>/borrar"
               >eliminar</a>
           </td>
