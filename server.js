@@ -1,5 +1,10 @@
 require("dotenv").config();
 
+const session = require("express-session");
+const passport = require("passport");
+
+const LocalStrategy = require("passport-local");
+
 const express = require("express");
 const routes = require("./routes");
 const dbInitialSetup = require("./dbInitialSetup");
@@ -9,6 +14,16 @@ const app = express();
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
+
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false, //  Docs: "The default value is true, but using the default has been deprecated".
+    saveUninitialized: false, // Docs: "The default value is true, but using the default has been deprecated".
+  }),
+);
+
+app.use(passport.session());
 
 routes(app);
 
