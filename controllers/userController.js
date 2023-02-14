@@ -13,11 +13,11 @@ async function register(req, res) {
 // Show the form for creating a new resource - post del registro de usuario
 async function create(req, res) {
   const passwordParaHashear = req.body.password;
+  const email = req.body.email;
   const passwordHasheado = await bcrypt.hash(passwordParaHashear, 10);
 
   const nuevoUsuario = await User.create({
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
+    email: req.body.email,
     password: passwordHasheado,
   });
   console.log(passwordParaHashear);
