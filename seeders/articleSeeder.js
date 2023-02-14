@@ -1,5 +1,5 @@
 const { faker } = require("@faker-js/faker");
-const { Article, Users } = require("../models");
+const { Article, User } = require("../models");
 
 faker.locale = "es";
 
@@ -19,15 +19,15 @@ module.exports = async () => {
   for (let i = 0; i < 8; i++) {
     users.push({
       firstname: faker.name.firstName(),
-      lastname: faker.lorem.paragraphs(1),
+      lastname: faker.name.lastName(),
       username: faker.lorem.word(),
-      password: username,
+      password: faker.lorem.word(),
     });
   }
 
   await Article.bulkCreate(articles);
   console.log("[Database] Se corrió el seeder de Articles.");
 
-  await Users.bulkCreate(users);
+  await User.bulkCreate(users);
   console.log("[Database] Se corrió el seeder de Users.");
 };
