@@ -25,6 +25,15 @@ app.use(
 
 app.use(passport.session());
 
+/* passport.use(
+new LocalStrategy(async function(username, password, done){
+try{
+  const user = await User.findOne({ where:{email: username} });
+}
+
+})
+) */
+
 routes(app);
 
 dbInitialSetup(); // Crea tablas e inserta datos de prueba.

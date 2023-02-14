@@ -1,19 +1,41 @@
 const { User } = require("../models");
-
+const bcrypt = require("bcryptjs");
 // Display a listing of the resource.
-async function index(req, res) {}
+async function index(req, res) {
+  res.render("login");
+}
 
 // Display the specified resource.
-async function show(req, res) {}
+async function register(req, res) {
+  res.render("register");
+}
 
-// Show the form for creating a new resource
-async function create(req, res) {}
+// Show the form for creating a new resource - post del registro de usuario
+async function create(req, res) {
+  const passwordParaHashear = req.body.password;
+  const passwordHasheado = await bcrypt.hash(passwordParaHashear, 10);
 
-// Store a newly created resource in storage.
-async function store(req, res) {}
+  const nuevoUsuario = await User.create({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    password: passwordHasheado,
+  });
+  console.log(passwordParaHashear);
+  console.log(passwordHasheado);
+  console.log(nuevoUsuario);
+  nuevoUsuario.save();
+  res.redirect("/");
+}
+
+// Store a newly created resource in storage. - login usuario
+async function login(req, res) {
+  const usuario = await User.findOne({ where: { username: req.body.unsername } });
+  const passwordIngresado = req.body.password;
+  const hashAlmacenado = usuario.password;
+}
 
 // Show the form for editing the specified resource.
-async function edit(req, res) {}
+async function logout(req, res) {}
 
 // Update the specified resource in storage.
 async function update(req, res) {}
@@ -26,10 +48,10 @@ async function destroy(req, res) {}
 
 module.exports = {
   index,
-  show,
+  register,
   create,
-  store,
-  edit,
+  login,
+  logout,
   update,
   destroy,
 };
