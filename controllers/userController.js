@@ -28,6 +28,7 @@ async function create(req, res) {
 
 // Store a newly created resource in storage. - login usuario
 async function login(req, res) {
+  console.log("entrando a login...");
   passport.use(
     new LocalStrategy(
       {
