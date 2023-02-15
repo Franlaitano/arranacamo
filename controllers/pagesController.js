@@ -20,6 +20,8 @@ const { Article } = require("../models");
 
 async function showHome(req, res) {
   const articles = await Article.findAll();
+  console.log(req.flash);
+  req.flash("info", "Welcome");
   res.render("home", { articles });
 }
 

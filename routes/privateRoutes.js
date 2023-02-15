@@ -10,7 +10,11 @@ const { Article } = require("../models");
 
 router.get("/", async function (req, res) {
   if (req.isAuthenticated()) {
-    const articles = await Article.findAll();
+    const articles = await Article.findAll({
+      where: {
+        userId: req.user.id,
+      },
+    });
     res.render("admin", { articles });
   } else {
     res.redirect("/login");
@@ -19,7 +23,6 @@ router.get("/", async function (req, res) {
 
 router.post("/admin/eliminar/:id", async function (req, res) {
   const articles = await Article.findAll();
-  alert("puto");
   res.redirect("/admin");
 });
 module.exports = router;

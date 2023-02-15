@@ -8,6 +8,8 @@ const userController = require("../controllers/userController");
 
 router.get("/", async function (req, res) {
   const articles = await Article.findAll();
+  console.log(req.flash);
+  req.flash("info", "Welcome");
   res.render("home", { articles });
 });
 

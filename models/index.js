@@ -22,11 +22,18 @@ Article.initModel(sequelize);
 /**
  * Luego de definir los modelos, se pueden establecer relaciones entre los
  * mismos (usando métodos como belongsTo, hasMany y belongsToMany)...
- */
+ 
 
 Article.hasMany(Comment);
 Comment.belongsTo(Article, { notNull: true, foreignKey: { allowNull: false } });
 User.belongsTo(Article);
+*/
+Article.belongsTo(User);
+Article.hasMany(Comment);
+User.hasMany(Article);
+User.hasMany(Comment);
+Comment.belongsTo(User);
+Comment.belongsTo(Article);
 
 module.exports = {
   sequelize,
