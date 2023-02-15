@@ -1,5 +1,5 @@
 const { User } = require("../models");
-
+const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
 // Display a listing of the resource.

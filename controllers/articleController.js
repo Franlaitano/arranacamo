@@ -12,10 +12,29 @@ async function index(req, res) {
 // Display the specified resource.
 
 async function show(req, res) {
-  const article = await Article.findByPk(req.params.id, {
-    include: Comment,
-  });
-  res.render("article", { article, comments: article.comments });
+  let permisson = false;
+  if (req.isAuthenticated()) {
+    console.log(permisson);
+    const article = await Article.findByPk(req.params.id, {
+      include: Comment,
+    });
+    res.render("article", {
+      article,
+      comments: article.comments,
+      permisson: true,
+    });
+  } else {
+    permisson = false;
+    console.log(permisson);
+    const article = await Article.findByPk(req.params.id, {
+      include: Comment,
+    });
+    res.render("article", {
+      article,
+      comments: article.comments,
+      permisson: false,
+    });
+  }
 }
 
 // Show the form for creating a new resource
@@ -29,6 +48,7 @@ async function store(req, res) {
     include: Users,
     title: `${req.body.title}`,
     content: `${req.body.content}`,
+    userId: req.user.id,
   });
   res.redirect("/panel");
 }

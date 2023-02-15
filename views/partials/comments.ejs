@@ -1,0 +1,23 @@
+<div class="container">
+  <h2 class="">Add your coment</h2>
+  <form method="post" action="/comentarios/<%=article.id%>">
+    <div class="insertComment">
+      <textarea
+        placeholder="Comment"
+        class="form-control"
+        id="inputText"
+        name="commentText"
+        cols="30"
+        rows="10"
+      ></textarea>
+      <button id="inputButton" type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </form>
+  <h2>Comments(<%= comments.length%>)</h2>
+  <% for (const comment of comments) { %>
+  <div class="mt-3" style="border-bottom: 1px solid gray">
+    <p><%= comment.content %></p>
+    <em> <%= comment.username %></em>
+  </div>
+  <% } %>
+</div>

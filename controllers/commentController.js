@@ -17,8 +17,8 @@ async function create(req, res) {}
 async function store(req, res) {
   const comment = {
     content: req.body.commentText,
-    username: req.body.name,
     articleId: req.params.articleId,
+    userId: req.user.id,
   };
   await Comment.create(comment);
   res.redirect(`/articulos/${req.params.articleId}`);
