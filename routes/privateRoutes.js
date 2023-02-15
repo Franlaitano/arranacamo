@@ -3,7 +3,7 @@ const { id } = require("date-fns/locale");
 const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
-const { Article } = require("../models");
+const { Article, User } = require("../models");
 
 // Rutas relacionadas al panel de control (Admin):
 // ...
@@ -14,6 +14,7 @@ router.get("/", async function (req, res) {
       where: {
         userId: req.user.id,
       },
+      include: User,
     });
     res.render("admin", { articles });
   } else {

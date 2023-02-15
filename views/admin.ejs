@@ -39,7 +39,7 @@
           <td><%=article.content%></td>
           <td></td>
           <td><%=article.createdAt%></td>
-          <td><%=article.author%></td>
+          <td><%=article.user.firstname%>   <%=article.user.lastname%> </td>
           <td class="text-center">
             <a id="editButton<%=article.id%>" class="btn btn-primary btn-edit w-100 admin-btn" href="articulos/<%= article.id%>/editar">editar</a>
             <a
