@@ -1,7 +1,7 @@
 const { User } = require("../models");
-const bcrypt = require("bcryptjs");
+
 const passport = require("passport");
-const LocalStrategy = require("passport-local");
+
 // Display a listing of the resource.
 async function index(req, res) {
   res.render("login");
@@ -27,39 +27,17 @@ async function create(req, res) {
 }
 
 // Store a newly created resource in storage. - login usuario
-async function login(req, res) {
-  console.log("entrando a login...");
-  passport.use(
-    new LocalStrategy(
-      {
-        usernameField: "email",
-        passwordField: "password",
-      },
-      async (username, password, cb) => {
-        try {
-          const user = await User.findOne({ where: { email: username } });
-          console.log(user);
-          if (!user) {
-            console.log("Nombre de usuario no existe.");
-            return cb(null, false, { message: "Credenciales incorrectas." });
-          }
-          const match = await bcrypt.compare(password, user.password);
-          if (!match) {
-            console.log("La contraseña es inválida.");
-            return cb(null, false, { message: "Credenciales incorrectas." });
-          }
-          console.log("Credenciales verificadas correctamente");
-          return cb(null, user);
-        } catch (error) {
-          cb(error);
-        }
-      },
-    ),
-  );
-}
+const login = passport.authenticate("local", {
+  successRedirect: "/panel",
+  failureRedirect: "/login",
+});
 
 // Show the form for editing the specified resource.
-async function logout(req, res) {}
+function logout(req, res) {
+  req.logout(() => {
+    res.redirect("/");
+  });
+}
 
 // Update the specified resource in storage.
 async function update(req, res) {}

@@ -1,39 +1,16 @@
 require("dotenv").config();
 
-const session = require("express-session");
-const passport = require("passport");
-
-const LocalStrategy = require("passport-local");
-
 const express = require("express");
 const routes = require("./routes");
 const dbInitialSetup = require("./dbInitialSetup");
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
-
+const passport = require("./passport/passport");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+
 app.set("view engine", "ejs");
-
-app.use(
-  session({
-    secret: process.env.SECRET,
-    resave: false, //  Docs: "The default value is true, but using the default has been deprecated".
-    saveUninitialized: false, // Docs: "The default value is true, but using the default has been deprecated".
-  }),
-);
-
-app.use(passport.session());
-
-/* passport.use(
-new LocalStrategy(async function(username, password, done){
-try{
-  const user = await User.findOne({ where:{email: username} });
-}
-
-})
-) */
-
+passport(app);
 routes(app);
 
 dbInitialSetup(); // Crea tablas e inserta datos de prueba.

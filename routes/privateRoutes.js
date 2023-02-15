@@ -9,8 +9,12 @@ const { Article } = require("../models");
 // ...
 
 router.get("/", async function (req, res) {
-  const articles = await Article.findAll();
-  res.render("admin", { articles });
+  if (req.isAuthenticated()) {
+    const articles = await Article.findAll();
+    res.render("admin", { articles });
+  } else {
+    res.redirect("/login");
+  }
 });
 
 router.post("/admin/eliminar/:id", async function (req, res) {

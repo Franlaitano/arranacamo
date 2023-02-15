@@ -16,7 +16,7 @@ module.exports = async () => {
   }
 
   const users = [];
-  await bcrypt.hash("1234", 8);
+  const pass = await bcrypt.hash("1234", 8);
 
   for (let i = 0; i < 8; i++) {
     users.push({
@@ -24,7 +24,7 @@ module.exports = async () => {
       lastname: faker.name.lastName(),
       username: faker.lorem.word(),
       email: faker.internet.email(),
-      password: "1234",
+      password: pass,
     });
   }
 
