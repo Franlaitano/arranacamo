@@ -1,5 +1,7 @@
 const { User } = require("../models");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
 // Display a listing of the resource.
 async function index(req, res) {
   res.render("login");
@@ -20,18 +22,39 @@ async function create(req, res) {
     email: req.body.email,
     password: passwordHasheado,
   });
-  console.log(passwordParaHashear);
-  console.log(passwordHasheado);
-  console.log(nuevoUsuario);
   nuevoUsuario.save();
   res.redirect("/");
 }
 
 // Store a newly created resource in storage. - login usuario
 async function login(req, res) {
-  const usuario = await User.findOne({ where: { username: req.body.unsername } });
-  const passwordIngresado = req.body.password;
-  const hashAlmacenado = usuario.password;
+  passport.use(
+    new LocalStrategy(
+      {
+        usernameField: "email",
+        passwordField: "password",
+      },
+      async (username, password, cb) => {
+        try {
+          const user = await User.findOne({ where: { email: username } });
+          console.log(user);
+          if (!user) {
+            console.log("Nombre de usuario no existe.");
+            return cb(null, false, { message: "Credenciales incorrectas." });
+          }
+          const match = await bcrypt.compare(password, user.password);
+          if (!match) {
+            console.log("La contraseña es inválida.");
+            return cb(null, false, { message: "Credenciales incorrectas." });
+          }
+          console.log("Credenciales verificadas correctamente");
+          return cb(null, user);
+        } catch (error) {
+          cb(error);
+        }
+      },
+    ),
+  );
 }
 
 // Show the form for editing the specified resource.
