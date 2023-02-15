@@ -1,12 +1,15 @@
 <nav class="navbar bg-dark px-5 nav">
-  <div class="container container-fluid">
+  <div class="container d-flex justify-content-between align-items-center">
     <a class="navbar-brand text-white fw-bold hack text-white" href="/"> Hack the blog</a>
-    <% if(!locals.user){ %>
-    <a class="btn btn-primary button" href="/login">Login</a>
-    <a class="btn btn-primary button" href="/registro">Register</a>
-    <%} else { %>
-    <a class="btn btn-primary button" href="/logout">Logout</a>
-    <a class="btn btn-primary button" href="/panel">Admin</a>
+
+    <ul class="d-flex justify-content-center align-items-center m-0 p-0">
+      <% if(!locals.user){ %>
+      <a class="nav-link text-white" href="/login">Login</a>
+      <a class="nav-link text-white" href="/registro">Register</a>
+      <%} else { %>
+      <a class="nav-link text-white" href="/logout">Logout</a>
+      <a class="nav-link text-white" href="/panel">Admin</a>
+    </ul>
     <%}%>
   </div>
 </nav>

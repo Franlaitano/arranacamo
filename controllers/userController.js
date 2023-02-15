@@ -19,6 +19,8 @@ async function create(req, res) {
   const passwordHasheado = await bcrypt.hash(passwordParaHashear, 10);
 
   const nuevoUsuario = await User.create({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
     email: req.body.email,
     password: passwordHasheado,
   });
