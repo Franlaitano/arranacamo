@@ -17,14 +17,15 @@
     <div class="background-img d-flex justify-content-center align-items-center">
       <div class="container">
         <div class="text-center text-white">
-          <h1 class="fs-1">Hack the blog</h1>
+          <h1 class="fs-1">Wild blog</h1>
           <p class="fs-5">El blog de LOS PIBES DE LA 12</p>
         </div>
       </div>
     </div>
     <!-- prettier-ignore -->
-    <div class="container">
-      <div class="articles mt-5">
+    <div class="background-home">
+    <div class="container border-container">
+      <div class="articles pt-5">
         <% for(const article of articles) { %>
         <a style="text-decoration: inherit;
         color: inherit;
@@ -42,6 +43,7 @@
     <!-- prettier-ignore-end -->
 
     <%-include("partials/footer.ejs")%>
+    </div>
     <script src="js/app.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
